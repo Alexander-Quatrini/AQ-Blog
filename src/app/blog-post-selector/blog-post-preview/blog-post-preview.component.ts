@@ -12,4 +12,7 @@ export class BlogPostPreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  title="Example";
+  source="../../../assets/example.png"
+
 }
