@@ -4,7 +4,13 @@ const app = express(),
     bodyParser = require("body-parser");
     port = 3080;
 
-const posts = [];
+const posts = [
+    {
+        title: "hello world", 
+        imageSource: "example.png", 
+        url: "localhost:4200"
+    }
+];
 
 app.use(bodyParser.json());
 

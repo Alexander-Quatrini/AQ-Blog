@@ -6,6 +6,7 @@ import { BlogPostSelectorModule } from './blog-post-selector/blog-post-selector.
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BlogPostSelectorModule
   ],
   providers: [],
