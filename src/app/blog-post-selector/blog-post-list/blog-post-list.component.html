@@ -2,6 +2,6 @@
 <app-blog-post-creator></app-blog-post-creator>
 
 <div *ngIf="posts$ | async as posts else noData">
+    <app-blog-post-preview *ngFor="let post of posts" [title]="post.title" [imageSource]="'../assets/'+post.imageSource" [url]="post.url"></app-blog-post-preview>
 </div>
 <ng-template #noData>There are no blog posts at the moment!</ng-template>
-<app-blog-post-preview></app-blog-post-preview>

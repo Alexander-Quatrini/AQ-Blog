@@ -6,7 +6,7 @@ const app = express(),
 
 const posts = [
     {
-        title: "hello world", 
+        title: "Jade is Cool", 
         imageSource: "example.png", 
         url: "localhost:4200"
     }
