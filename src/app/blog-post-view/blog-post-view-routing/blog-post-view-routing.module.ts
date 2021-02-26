@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
+import { BlogPostComponent } from '../blog-post/blog-post.component'
 
-
+const routes: Routes = [
+  {
+    path: 'posts',
+    component: BlogPostComponent
+  }
+];
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule]
 })
 export class BlogPostViewRoutingModule { }

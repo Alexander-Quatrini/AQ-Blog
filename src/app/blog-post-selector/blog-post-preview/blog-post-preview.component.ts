@@ -14,12 +14,6 @@ export class BlogPostPreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeURL($url: string): void {
-    const navigationDetails: string[] = [$url];
-
-    //this.router.navigate(navigationDetails);
-  }
-
   @Input() title: string = "";
   @Input() imageSource: string = "";
   @Input() url: string = "/posts"
