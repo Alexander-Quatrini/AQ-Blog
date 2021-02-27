@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    IntroComponent,
     NavbarComponent
   ],
   imports: [

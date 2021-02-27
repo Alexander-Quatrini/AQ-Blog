@@ -1,5 +1,4 @@
-<p>blog-post-list works!</p>
-<app-blog-post-creator></app-blog-post-creator>
+<app-intro></app-intro>
 
 <div *ngIf="posts$ | async as posts else noData">
     <app-blog-post-preview *ngFor="let post of posts" [title]="post.title" [imageSource]="'../assets/'+post.imageSource" [url]="post.url"></app-blog-post-preview>

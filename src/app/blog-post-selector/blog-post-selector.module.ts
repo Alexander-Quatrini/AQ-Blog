@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { BlogPostListComponent } from './blog-post-list/blog-post-list.component';
 import { BlogPostPreviewComponent } from './blog-post-preview/blog-post-preview.component';
 import { BlogPostCreatorComponent } from './blog-post-creator/blog-post-creator.component'
+import { IntroComponent } from '../intro/intro.component';
 
 @NgModule({
-  declarations: [BlogPostListComponent, BlogPostPreviewComponent, BlogPostCreatorComponent],
+  declarations: [IntroComponent, BlogPostListComponent, BlogPostPreviewComponent, BlogPostCreatorComponent],
   imports: [
     FormsModule,
     CommonModule,
