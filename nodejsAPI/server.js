@@ -6,13 +6,14 @@ const app = express(),
 
 const posts = [
     {
+        id: "00001",
         title: "Jade is Cool", 
         imageSource: "example.png", 
         url: "localhost:4200"
     }
 ];
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/api/posts', (req, res) => {
     res.json(posts);

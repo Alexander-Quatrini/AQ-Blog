@@ -14,6 +14,7 @@ export class BlogPostPreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() id: string = "000000";
   @Input() title: string = "";
   @Input() imageSource: string = "";
   @Input() url: string = "/posts"

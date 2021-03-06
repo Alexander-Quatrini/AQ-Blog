@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
 
 interface BlogPost {
+  id: string;
   title: string;
   imageSource: string;
   url: string;
