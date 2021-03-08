@@ -7,7 +7,7 @@ const app = express(),
     port = 3080;
 
 var pool = mysql.createPool({
-    connectionLimit: 10,
+    connectionLimit: 3,
     host: config.host,
     port: config.port,
     user: config.user,
