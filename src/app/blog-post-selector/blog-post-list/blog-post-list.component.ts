@@ -6,9 +6,11 @@ import * as _ from 'lodash';
 
 interface BlogPost {
   id: string;
+  author: string;
+  imageURL: string;
+  date: string;
   title: string;
-  imageSource: string;
-  url: string;
+  content: string;
 }
 
 @Component({

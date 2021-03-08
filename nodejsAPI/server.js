@@ -1,22 +1,30 @@
+var config = require('./config');
 const express = require('express');
+var mysql = require('mysql');
 
 const app = express(),
     bodyParser = require("body-parser");
     port = 3080;
 
-const posts = [
-    {
-        id: "00001",
-        title: "Jade is Cool", 
-        imageSource: "example.png", 
-        url: "localhost:4200"
-    }
-];
+var pool = mysql.createPool({
+    connectionLimit: 10,
+    host: config.host,
+    port: config.port,
+    user: config.user,
+    password: config.password
+});
 
-app.use(express.json());
 
 app.get('/api/posts', (req, res) => {
-    res.json(posts);
+    pool.getConnection((err, connection) => {
+        if(err) console.log(err);
+        console.log('Connected as id '+ connection.threadId);
+        connection.query('SELECT * FROM `blog`.`post`', (err,rows) => {
+            if (err) console.log(err);
+            res.json(rows);
+            connection.release();
+        })
+    })
   });
   
   app.post('/api/post', (req, res) => {
