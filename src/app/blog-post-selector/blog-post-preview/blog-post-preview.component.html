@@ -1,4 +1,6 @@
 <div [routerLink]= "['/posts']" class = "preview">
-    <p>{{title}}</p>
-    <img src={{imageSource}} height="100" width="100" alt={{title}}/>
+    <p id="title">{{title}}</p>
+    <img src={{imageSource}} alt={{title}}/>
+    <div class="divider"></div>
+    <p id="summary">{{postSummary}}</p>
 </div>
