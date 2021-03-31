@@ -1,0 +1,6 @@
+<app-intro></app-intro>
+
+<div *ngIf="posts$ | async as posts else noData" class="preview-wrapper">
+    <app-blog-post-preview *ngFor="let post of posts" [id]="post.id" [title]="post.title" [imageSource]="'../assets/'+post.imageURL" [postSummary]="post.summary" [url] ="post.id"></app-blog-post-preview>
+</div>
+<ng-template #noData>There are no blog posts at the moment!</ng-template>

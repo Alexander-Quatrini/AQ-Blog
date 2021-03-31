@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-blog-post-preview',
   templateUrl: './blog-post-preview.component.html',
   styleUrls: ['./blog-post-preview.component.sass']
 })
+
+@Injectable()
 export class BlogPostPreviewComponent implements OnInit {
 
   constructor() { }
@@ -12,7 +14,10 @@ export class BlogPostPreviewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  title="Example";
-  source="../../../assets/example.png"
+  @Input() id: string = "000000";
+  @Input() title: string = "";
+  @Input() imageSource: string = "";
+  @Input() url: string = "/posts";
+  @Input() postSummary: string = "";
 
 }
