@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-post',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogPostComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router) { }
+
+  urlTitle = this.router.url.substr(7) as string;  
 
   ngOnInit(): void {
+
   }
 
 }
