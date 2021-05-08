@@ -12,6 +12,7 @@ interface BlogPost {
   title: string;
   content: string;
   summary: string;
+  blog_slug: string;
 }
 
 @Component({
