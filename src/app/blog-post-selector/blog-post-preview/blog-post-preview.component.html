@@ -1,6 +1,6 @@
-<div [routerLink]= "['/posts/' + this.url]" class = "preview">
+<div [routerLink]= "['/posts/' + this.id + '/' + this.type + '/' + this.url]" class = "preview">
+    <div class="postImageWrapper">
+        <img src={{imageSource}} alt={{title}}/>
+    </div>
     <p id="title">{{title}}</p>
-    <img src={{imageSource}} alt={{title}}/>
-    <div class="divider"></div>
-    <p id="summary">{{postSummary}}</p>
 </div>

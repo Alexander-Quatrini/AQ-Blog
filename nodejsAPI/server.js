@@ -26,7 +26,33 @@ app.get('/api/posts', (req, res) => {
         })
     })
   });
+
+  app.get('/api/posts/:id', (req, res) => {
+        pool.getConnection((err,connection) => {
+            if(err) console.log(err);
+            console.log("Retrieving article " + req.params.id);
+            connection.query('SELECT content, title, type FROM `blog`.`post` WHERE id=' + req.params.id, (err,rows) =>
+            {
+                if (err) console.log(err);
+                res.json(rows);
+                connection.release();
+            })
+        })
+  });
   
+  app.get('/api/posts/:id/:related', (req, res) => {
+      pool.getConnection((err,connection) => {
+          if(err) console.log(err);
+          console.log("Retrieving related articles " + req.params.related);
+          connection.query('SELECT * FROM `blog`.`post` WHERE type=\"' + req.params.related +'\" AND id!=' + req.params.id, (err,rows) =>
+          {
+              if (err) console.log(err);
+              res.json(rows);
+              connection.release();
+          })
+      })
+  });
+
   app.post('/api/post', (req, res) => {
     const post = req.body.post;
     posts.push(post);
