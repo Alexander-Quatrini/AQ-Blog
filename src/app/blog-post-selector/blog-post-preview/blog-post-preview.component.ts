@@ -23,5 +23,6 @@ export class BlogPostPreviewComponent implements OnInit {
   @Input() imageSource: string = "";
   @Input() url: string = "/posts";
   @Input() postSummary: string = "";
+  @Input() type: string = "default";
 
 }

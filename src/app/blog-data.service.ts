@@ -8,13 +8,15 @@ import { map } from 'rxjs/operators';
 })
 export class BlogDataService {
 
-  private currentID = new Subject<string>();
+  private currentID: number = 0;
 
   constructor( private http: HttpClient){}
 
   fetchBlog(id: string): Observable<BlogPostContent[]>{
 
+    this.currentID= Number(id);
     return this.http.get<BlogPostContent[]>('/api/posts/' + id);
+
   }
 
   fetchList(): Observable<BlogPostContent[]>{
@@ -22,13 +24,8 @@ export class BlogDataService {
 
   }
 
-  updateServiceID(id: string): void{
-    this.currentID.next(id);
-  }
-
-  fetchCurrentID(): Observable<string>{
-
-    return this.currentID.asObservable();
+  fetchRelatedArticles(type: string): Observable<BlogPostContent[]>{
+    return this.http.get<BlogPostContent[]>('/api/posts/' + this.currentID + '/' + type);
   }
 
 }

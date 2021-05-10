@@ -1,7 +1,20 @@
-<div class="header">
-    <h1>{{title}}</h1>
-</div>
 <div *ngIf="blogPostData$ | async as data else noData">
-    <p>{{data[0].content}}</p>
+    <div class="header">
+        <h1>{{data[0].title}}</h1>
+    </div>
+<div class="content-sidebar-wrapper">
+    <div class="content">
+        <p>{{data[0].content}}</p>
+    </div>
+    <div class="sidebar-wrapper">
+        <div class="sidebar" *ngIf="relatedPosts$ | async as rposts else noRelated"> 
+        <p>Related articles:</p>
+            <div class = "preview" *ngFor="let rpost of rposts">
+                <p>{{rpost.title}}</p>   
+            </div>
+        </div>
+        <ng-template #noRelated>NO</ng-template>
+    </div>
+</div>
 </div>
 <ng-template #noData>Problem retrieving article.</ng-template>

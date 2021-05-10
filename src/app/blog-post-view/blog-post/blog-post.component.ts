@@ -15,15 +15,19 @@ export class BlogPostComponent implements OnInit {
 
   blogPostData$!: Observable<BlogPostContent[]>;
 
+  relatedPosts$!: Observable<BlogPostContent[]>;
+
   selectedId!: string;
+  type!: string;
 
   constructor(public router:Router, private http: HttpClient, private dataService: BlogDataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.selectedId = this.route.snapshot.paramMap.get('id') || '';
-
+    this.type = this.route.snapshot.paramMap.get('type') || '';
     this.blogPostData$ = this.dataService.fetchBlog(this.selectedId);
+    this.relatedPosts$ = this.dataService.fetchRelatedArticles(this.type);
 
   }
 
