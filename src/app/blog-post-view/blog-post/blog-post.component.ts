@@ -1,41 +1,33 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http'
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import * as _ from 'lodash';
-
-interface BlogPostContent{
-  content: string;
-  type: string;
-}
+import { switchMap } from 'rxjs/operators';
+import { BlogDataService, BlogPostContent } from 'src/app/blog-data.service';
 
 @Component({
   selector: 'app-blog-post',
   templateUrl: './blog-post.component.html',
   styleUrls: ['./blog-post.component.sass']
 })
+@Injectable()
 export class BlogPostComponent implements OnInit {
 
-  content$!: BlogPostContent[];
-  
+  blogPostData$!: Observable<BlogPostContent[]>;
 
-  constructor(public router:Router, private http: HttpClient) { }
+  selectedId!: string;
 
-  urlTitle = this.router.url.substr(7) as string;  
+  constructor(public router:Router, private http: HttpClient, private dataService: BlogDataService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.http.get<BlogPostContent[]>("/api/posts/" + this.id).subscribe(data => {this.content$ = {
-      ...data
-    }
+    this.selectedId = this.route.snapshot.paramMap.get('id') || '';
 
-    console.log(this.content$);
-    });
+    this.blogPostData$ = this.dataService.fetchBlog(this.selectedId);
 
   }
 
-@Input() title: string = "Unknown Title";
-@Input() contentDefault: string = "You should not be seeing this.";
-@Input() id: string = "1";
+title: string ="";
+content: string ="";
+
 }

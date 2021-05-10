@@ -1,7 +1,7 @@
 <div class="header">
     <h1>{{title}}</h1>
 </div>
-<div *ngIf="this.content$">
-    <p>{{this.content$[0].content}}</p>
+<div *ngIf="blogPostData$ | async as data else noData">
+    <p>{{data[0].content}}</p>
 </div>
 <ng-template #noData>Problem retrieving article.</ng-template>

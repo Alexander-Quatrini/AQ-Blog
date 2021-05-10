@@ -2,18 +2,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import * as _ from 'lodash';
-
-interface BlogPost {
-  id: string;
-  author: string;
-  imageURL: string;
-  date: string;
-  title: string;
-  summary: string;
-  type: string;
-  blog_slug: string;
-}
+import { BlogDataService, BlogPostContent } from 'src/app/blog-data.service';
 
 @Component({
   selector: 'app-blog-post-list',
@@ -24,13 +13,14 @@ interface BlogPost {
 @Injectable()
 export class BlogPostListComponent implements OnInit {
 
-  posts$!: Observable<BlogPost[]>;
+  posts$!: Observable<BlogPostContent[]>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private blogService: BlogDataService) {
   }
 
   ngOnInit(): void {
-    this.posts$ = this.http.get<BlogPost[]>("/api/posts").pipe(map(data => _.values(data)));
+    this.posts$ = this.blogService.fetchList();
 
   }
+  
 }
