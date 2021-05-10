@@ -9,12 +9,12 @@
     <div class="sidebar-wrapper">
         <div class="sidebar" *ngIf="relatedPosts$ | async as rposts else noRelated"> 
         <p>Related articles:</p>
-            <div class = "preview" *ngFor="let rpost of rposts">
+            <div *ngFor="let rpost of rposts" [routerLink]= "['/posts/' + rpost.id + '/' + rpost.type + '/' + rpost.blog_slug + '/']" class= "preview">
                 <p>{{rpost.title}}</p>   
             </div>
         </div>
-        <ng-template #noRelated>NO</ng-template>
+        <ng-template #noRelated>LOADING...</ng-template>
     </div>
 </div>
 </div>
-<ng-template #noData>Problem retrieving article.</ng-template>
+<ng-template #noData>LOADING...</ng-template>

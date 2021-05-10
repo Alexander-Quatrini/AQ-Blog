@@ -24,11 +24,8 @@ export class BlogPostComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.selectedId = this.route.snapshot.paramMap.get('id') || '';
-    this.type = this.route.snapshot.paramMap.get('type') || '';
-    this.blogPostData$ = this.dataService.fetchBlog(this.selectedId);
-    this.relatedPosts$ = this.dataService.fetchRelatedArticles(this.type);
-
+    this.route.params.subscribe(data => {this.selectedId = data.id; this.blogPostData$ = this.dataService.fetchBlog(this.selectedId);})
+    this.route.params.subscribe(data => {this.type = data.type; this.relatedPosts$ = this.dataService.fetchRelatedArticles(this.type);})
   }
 
 title: string ="";

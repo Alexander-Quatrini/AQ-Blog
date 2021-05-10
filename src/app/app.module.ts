@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { BlogPostSelectorModule } from './blog-post-selector/blog-post-selector.module';
 
 import { AppComponent } from './app.component';
-import { IntroComponent } from './intro/intro.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { BlogPostViewModule } from './blog-post-view/blog-post-view.module';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     HttpClientModule,
     BlogPostSelectorModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BlogPostViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
