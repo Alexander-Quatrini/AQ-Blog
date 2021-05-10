@@ -1,5 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http'
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import * as _ from 'lodash';
+
+interface BlogPostContent{
+  content: string;
+  type: string;
+}
 
 @Component({
   selector: 'app-blog-post',
@@ -8,12 +17,25 @@ import { Router } from '@angular/router';
 })
 export class BlogPostComponent implements OnInit {
 
-  constructor(public router:Router) { }
+  content$!: BlogPostContent[];
+  
+
+  constructor(public router:Router, private http: HttpClient) { }
 
   urlTitle = this.router.url.substr(7) as string;  
 
   ngOnInit(): void {
 
+    this.http.get<BlogPostContent[]>("/api/posts/" + this.id).subscribe(data => {this.content$ = {
+      ...data
+    }
+
+    console.log(this.content$);
+    });
+
   }
 
+@Input() title: string = "Unknown Title";
+@Input() contentDefault: string = "You should not be seeing this.";
+@Input() id: string = "1";
 }

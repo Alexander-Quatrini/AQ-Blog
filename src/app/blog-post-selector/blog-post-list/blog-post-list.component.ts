@@ -10,8 +10,8 @@ interface BlogPost {
   imageURL: string;
   date: string;
   title: string;
-  content: string;
   summary: string;
+  type: string;
   blog_slug: string;
 }
 
