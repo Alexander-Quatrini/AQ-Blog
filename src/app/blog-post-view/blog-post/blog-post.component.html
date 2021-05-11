@@ -7,14 +7,19 @@
         <p>{{data[0].content}}</p>
     </div>
     <div class="sidebar-wrapper">
-        <div class="sidebar" *ngIf="relatedPosts$ | async as rposts else noRelated"> 
+        <div class="sidebar" *ngIf="relatedPosts$ | async as rposts else relatedLoading"> 
         <p>Related articles:</p>
             <div *ngFor="let rpost of rposts" [routerLink]= "['/posts/' + rpost.id + '/' + rpost.type + '/' + rpost.blog_slug + '/']" class= "preview">
                 <p>{{rpost.title}}</p>   
             </div>
         </div>
-        <ng-template #noRelated>LOADING...</ng-template>
+        <ng-template #relatedLoading class="sidebar-faded loading"></ng-template>
     </div>
 </div>
 </div>
-<ng-template #noData>LOADING...</ng-template>
+<ng-template #noData><div class="loading-wrapper">
+    <img src="assets/loading-transparent.gif">
+    <div class="content-faded">
+        <p>EXAMPLE</p>
+    </div>
+</div></ng-template>
