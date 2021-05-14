@@ -7,13 +7,15 @@ import { BlogPostListComponent } from './blog-post-list/blog-post-list.component
 import { BlogPostPreviewComponent } from './blog-post-preview/blog-post-preview.component';
 import { BlogPostCreatorComponent } from './blog-post-creator/blog-post-creator.component'
 import { IntroComponent } from '../intro/intro.component';
+import { ImageCarouselModuleModule } from '../image-carousel-module/image-carousel-module.module';
 
 @NgModule({
   declarations: [IntroComponent, BlogPostListComponent, BlogPostPreviewComponent, BlogPostCreatorComponent],
   imports: [
     FormsModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    ImageCarouselModuleModule
   ],
 
   exports: [BlogPostListComponent]

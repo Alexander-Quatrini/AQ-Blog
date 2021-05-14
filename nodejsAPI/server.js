@@ -1,6 +1,7 @@
 var config = require('./config');
 const express = require('express');
 var mysql = require('mysql');
+var fs= require('fs');
 
 const app = express(),
     bodyParser = require("body-parser");
@@ -14,6 +15,12 @@ var pool = mysql.createPool({
     password: config.password
 });
 
+function processFileNames(fileDir, callback){
+    fs.readdir("../"+fileDir, (err, fileNames) => {
+        if (err) console.log(err);
+        callback(fileNames);
+    });
+}
 
 app.get('/api/posts', (req, res) => {
     pool.getConnection((err, connection) => {
@@ -52,6 +59,13 @@ app.get('/api/posts', (req, res) => {
           })
       })
   });
+
+  app.get('/api/images/*', (req, res) => {
+    processFileNames(req.params[0], (fileNames)=>{
+        console.log(fileNames);
+        return res.json(fileNames);
+      });
+  })
 
   app.post('/api/post', (req, res) => {
     const post = req.body.post;
