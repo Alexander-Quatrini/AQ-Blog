@@ -27,6 +27,7 @@ export class ImageCarouselComponent implements OnInit, OnDestroy {
   }
 
   startTimer(): void{
+    setTimeout(() => this.changePicture(), 0);
     setInterval(() => this.changePicture(), 3000)
   }
 
